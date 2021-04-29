@@ -6,12 +6,14 @@ let correctAnswer;
 //script upon click start/reset
 document.getElementById("startreset").onclick = ()=> {
     if(playing){
-        Location.reload();
+        console.log("ending game");
+        location.reload();
     }else{
+        console.log("starting new game");
         score = 0;
         document.getElementById("scorevalue").innerHTML = score;
         show('timeremaining');  //I'm not sure I completely understand this line
-        timeremaining = 60;
+        timeremaining = 10;
         document.getElementById('timeremainingvalue').innerHTML = timeremaining;
         document.getElementById('startreset').innerHTML = "Reset Game";
         playing = true;
@@ -27,6 +29,7 @@ document.getElementById("startreset").onclick = ()=> {
 //clicking on an answer choice
 for(i=1; i<5; i++){
     document.getElementById("box"+i).onclick = ()=> {
+        console.log("answer clicked");
         if(playing == true){
             if(this.innerHTML == correctAnswer){
                 score++;
@@ -99,8 +102,7 @@ const generateQA = ()=> {
     let x = randNum(10);
     let y = randNum(10);
     let rand = Math.floor(Math.random()*6); //note: this too might need adjustment
-    console.log("OPERATION for correct answer: " + rand);
-    console.log("BEFORE: x= " + x + ", and y=" + y);                
+    console.log("OPERATION: " + rand + "\nAFTER: x= " + x + ", and y=" + y);              
 
     let correctAnswer;
     switch(rand){
@@ -124,15 +126,15 @@ const generateQA = ()=> {
             break;
     }
 
+    //round correct answer to 2 decimal places
     correctAnswer = correctAnswer.toFixed(2);
 
-    console.log("OPERATION for correct answer: " + rand);
-    console.log("correct Answer: " + correctAnswer);
-    console.log("AFTER: x= " + x + ", and y=" + y);
+    // console.log("OPERATION: " + rand + "\ncorrect Answer: " + correctAnswer + "\nAFTER: x= " + x + ", and y=" + y);
+   
 
 
     //post question to the question div
-    document.getElementById("question").innerHTML = rand == 5 ? `${y} ${operations[rand]} ${x}` : `${x} ${operations[rand]} ${y}`;    //might need adjustment
+    document.getElementById("question").innerHTML = (rand == 5 ? `${y} ${operations[rand]} ${x}` : `${x} ${operations[rand]} ${y}`);    //might need adjustment
 
     //generate a 'index position' for the correct answer in the answers array
     let correctPosition = Math.floor(Math.random()*3 + 1);    //might need adjustment

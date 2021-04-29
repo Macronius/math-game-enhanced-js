@@ -25,3 +25,8 @@ TODO:
 
 - option to post achievement to facefook
 
+
+ISSUES:
+
+- every answer selection counts as correct (false sense of good intuition)
+

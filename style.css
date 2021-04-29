@@ -169,13 +169,17 @@ body{
 }
 
 #gameover{
-    height: 300px;
+    height: 360px;
     width: 800px;
-    background: linear-gradient(#F3CA6B, #F3706C);
+    /* background: linear-gradient(#F3CA6B, #F3706C);
     -webkit-background:linear-gradient(#F3CA6B, #F3706C);
     -ms-background:linear-gradient(#F3CA6B, #F3706C);
     -moz-background:radlinearial-gradient(#F3CA6B, #F3706C);
-    -o-background:linear-gradient(#F3CA6B, #F3706C);
+    -o-background:linear-gradient(#F3CA6B, #F3706C); */
+    background-color: transparent;
+    backdrop-filter: blur(55px);
+    border: 2px solid #efefef;
+    border-radius: 15px;
     color: #fff;
     font-size: 3.5rem;
     text-align: center;
